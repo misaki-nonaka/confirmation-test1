@@ -17,7 +17,6 @@ services:
       args:
         UID: ${UID}
         GID: ${GID}
-    user: "${UID}:${GID}"
     volumes:
       - ./src:/var/www/
 

@@ -15,6 +15,9 @@
         <div class="header__inner">
             <a href="/" class="header__logo">FashionablyLate</a>
         </div>
+        <div class="header__nav">
+            @yield('nav')
+        </div>
     </header>
 
     <main>
