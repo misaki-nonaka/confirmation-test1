@@ -1,0 +1,32 @@
+body {
+    font-family:
+            "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+.header {
+    border: 0.5px solid #938270;
+}
+
+.header__inner {
+    margin: 0 auto;
+    padding: 20px 0;
+    max-width: 1230px;
+    text-align: center;
+}
+
+.header__logo {
+    text-decoration: none;
+    font-size: 28px;
+}
+
+.header__logo, .title {
+    color: #938270;
+    font-family: "Times New Roman", "Georgia", serif;
+}
+
+.title {
+    margin: 20px auto;
+    text-align: center;
+    font-weight: normal;
+}
+
