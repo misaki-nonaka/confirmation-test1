@@ -20,4 +20,8 @@ class Contact extends Model
         'building',
         'detail'
     ];
+
+    public function category() {
+        return $this->belongsTo('App\Models\Category');
+    }
 }
