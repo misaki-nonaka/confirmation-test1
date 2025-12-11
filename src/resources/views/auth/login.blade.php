@@ -14,7 +14,7 @@
 
 @section('content')
 <div class="register-form__content">
-    <form action="{{ route('login') }}" method="post" class="form">
+    <form action="/login" method="post" class="form">
         @csrf
         <div class="form__group">
             <div class="form__group-title">

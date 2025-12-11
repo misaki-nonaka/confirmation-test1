@@ -22,6 +22,6 @@ class LoginController extends Controller
             ]);
         }
 
-        return redirect()->intended('/home');
+        return redirect()->intended('/admin');
     }
 }

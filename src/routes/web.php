@@ -24,3 +24,6 @@ Route::post('/login', [LoginController::class, 'store']);
 Route::middleware('auth')->group(function() {
     Route::get('/admin', [AuthController::class, 'admin']);
 });
+Route::get('/search', [AuthController::class, 'search']);
+Route::get('/reset', [AuthController::class, 'reset']);
+Route::delete('/delete', [AuthController::class, 'destroy']);

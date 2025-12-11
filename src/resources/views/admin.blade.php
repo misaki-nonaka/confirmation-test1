@@ -20,17 +20,28 @@
 @section('content')
 <div class="admin-content">
     <div class="search-form__content">
-        <input type="text" class="search-form__input" name="keyword">
-        <select name="gender" class="search-form__gender">
-            <option value="">性別</option>
-
-        </select>
-        <select name="category_id" class="search-form__category">
-            <option value="">お問い合わせの種類</option>
-
-        </select>
-        <button class="search-form__button-submit" type="submit">検索</button>
-        <button class="search-form__button-reset">リセット</button>
+        <form action="/search" method="get">
+            @csrf
+            <input type="text" class="search-form__input" name="keyword" placeholder="名前やメールアドレスを入力してください">
+            <select name="gender" class="search-form__gender">
+                <option value="">性別</option>
+                <option value="1">男性</option>
+                <option value="2">女性</option>
+                <option value="3">その他</option>
+            </select>
+            <select name="category_id" class="search-form__category">
+                <option value="">お問い合わせの種類</option>
+                @foreach($categories as $category)
+                <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                @endforeach
+            </select>
+            <input type="date" class="search-form__date" name="date">
+            <button class="search-form__button-submit" type="submit">検索</button>
+        </form>
+        <form action="/reset" method="get">
+            @csrf
+            <button class="search-form__button-reset" type="submit">リセット</button>
+        </form>
     </div>
     <div class="contact-list">
         <div class="contact-list__topper">
@@ -120,8 +131,13 @@
                         <td>{{ $item['detail'] }}</td>
                     </tr>
                 </table>
-                <form action="" method="post">
-                    <button type="submit">削除</button>
+                <form action="/delete" method="post" class="delete-form">
+                    @method('DELETE')
+                    @csrf
+                    <div class="delete-form__button">
+                        <input type="hidden" name="id" value="{{ $item['id'] }}">
+                        <button type="submit">削除</button>
+                    </div>
                 </form>
             </div>
         </div>
