@@ -10,7 +10,7 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-    public function store(LoginRequest $request)
+    public function login(LoginRequest $request)
     {
 
         $credentials = $request->only('email', 'password');

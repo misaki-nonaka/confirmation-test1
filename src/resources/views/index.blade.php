@@ -126,12 +126,14 @@
                 <span class="form__label--required">※</span>
             </div>
             <div class="form__group-content">
-                <select name="category_id" class="form__select">
-                    <option value="">選択してください</option>
-                    @foreach($categories as $category)
-                    <option value="{{ $category['id'] }}" {{old('category_id') == $category['id'] ? 'selected' : ''}}>{{ $category['content'] }}</option>
-                    @endforeach
-                </select>
+                <div class="form-content__select">
+                    <select name="category_id" class="form__select">
+                        <option value="">選択してください</option>
+                        @foreach($categories as $category)
+                        <option value="{{ $category['id'] }}" {{old('category_id') == $category['id'] ? 'selected' : ''}}>{{ $category['content'] }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="form__error">
                     @error('category_id')
                     {{ $message }}

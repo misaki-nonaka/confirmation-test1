@@ -6,10 +6,10 @@
 
 @section('nav')
 @if (Auth::check())
-<nav>
+<nav class="nav-button">
     <form action="/logout" method="post">
         @csrf
-        <button class="header-nav__button">ログアウト</button>
+        <button class="header-nav__button">logout</button>
     </form>
 </nav>
 @endif
@@ -20,22 +20,28 @@
 @section('content')
 <div class="admin-content">
     <div class="search-form__content">
-        <form action="/search" method="get">
+        <form action="/search" method="get" class="search-form__inner">
             @csrf
             <input type="text" class="search-form__input" name="keyword" placeholder="名前やメールアドレスを入力してください">
-            <select name="gender" class="search-form__gender">
-                <option value="">性別</option>
-                <option value="1">男性</option>
-                <option value="2">女性</option>
-                <option value="3">その他</option>
-            </select>
-            <select name="category_id" class="search-form__category">
-                <option value="">お問い合わせの種類</option>
-                @foreach($categories as $category)
-                <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
-                @endforeach
-            </select>
-            <input type="date" class="search-form__date" name="date">
+            <div class="search-form__gender">
+                <select name="gender" class="select-form">
+                    <option value="">性別</option>
+                    <option value="1">男性</option>
+                    <option value="2">女性</option>
+                    <option value="3">その他</option>
+                </select>
+            </div>
+            <div class="search-form__category">
+                <select name="category_id" class="select-form">
+                    <option value="">お問い合わせの種類</option>
+                    @foreach($categories as $category)
+                    <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="search-form__date">
+                <input type="date" class="date-form" name="date">
+            </div>
             <button class="search-form__button-submit" type="submit">検索</button>
         </form>
         <form action="/reset" method="get">
@@ -45,9 +51,17 @@
     </div>
     <div class="contact-list">
         <div class="contact-list__topper">
-            <button>エクスポート</button>
+            <form action="/export" method="post">
+                @csrf
+                <div class="export-button">
+                    <button>エクスポート</button>
+                </div>
+                @foreach ($items as $item)
+                    <input type="hidden" name="ids[]" value="{{ $item['id'] }}">
+                @endforeach
+            </form>
             <div class="pagination">
-                {{ $items->links() }}
+                {{ $items->links('vendor.pagination.tailwind2') }}
             </div>
         </div>
         <table class="contact-table">
@@ -76,7 +90,9 @@
                 </td>
                 <td>{{ $item['email'] }}</td>
                 <td>{{ $item->category->content }}</td>
-                <td><a href="#modal-{{ $item['id'] }}">詳細</a></td>
+                <td>
+                    <a href="#modal-{{ $item['id'] }}" class="button-detail">詳細</a>
+                </td>
             </tr>
             @endforeach
         </table>

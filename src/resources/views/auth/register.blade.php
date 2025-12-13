@@ -5,7 +5,7 @@
 @endsection
 
 @section('nav')
-<nav>
+<nav class="nav-button">
     <button onclick="location.href='/login'">login</button>
 </nav>
 @endsection
