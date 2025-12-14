@@ -1,0 +1,36 @@
+.message {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50vh;
+}
+
+h1 {
+    font-size: 20px;
+    color: #938270;
+}
+
+.message::after {
+    content: 'Thank you';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 180px;
+    color: rgba(147, 130, 112, 0.1);
+    z-index: -1;
+    white-space: nowrap;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 120px;
+    height: 40px;
+    border: none;
+    background: #938270;
+    color: #fff;
+    cursor: pointer;
+}

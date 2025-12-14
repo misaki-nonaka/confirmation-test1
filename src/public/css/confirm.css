@@ -1,0 +1,72 @@
+.contact-form__content {
+    margin: 0 auto;
+    padding: 30px 15px;
+    max-width: 1230px;
+}
+
+.form {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.form__table {
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 0 20px;
+}
+
+.table__row {
+    height: 60px;
+}
+
+th {
+    color: #fff;
+    background: #938270;
+    width: 30%;
+}
+
+td {
+    color: #938270;
+}
+
+input {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #938270;
+    font-family:
+            "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+}
+
+
+
+.form__button {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.form__button-submit {
+    padding: 10px;
+    width: 120px;
+    height: 40px;
+    border: none;
+    background: #938270;
+    color: #fff;
+    cursor: pointer;
+}
+
+.form__button-back {
+    padding: 10px;
+    width: 120px;
+    height: 40px;
+    color: #938270;
+    border: none;
+    text-decoration: underline solid #938270;
+    background: none;
+    cursor: pointer;
+}

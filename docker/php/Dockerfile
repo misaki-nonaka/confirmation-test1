@@ -16,6 +16,8 @@ RUN curl -sS https://getcomposer.org/installer | php \
 RUN groupadd -g ${GID} appgroup \
   && useradd -m -u ${UID} -g appgroup appuser
 
+RUN mkdir -p /var/www && chown -R appuser:appgroup /var/www
+
 USER appuser
 
 WORKDIR /var/www
