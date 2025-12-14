@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\ExportController;
 
 /*
@@ -21,12 +21,14 @@ Route::get('/', [ContactController::class, 'index']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
 
-Route::post('/login', [LoginController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/register', [AuthController::class, 'register']);
+
 Route::middleware('auth')->group(function() {
-    Route::get('/admin', [AuthController::class, 'admin']);
+    Route::get('/admin', [AdminController::class, 'admin']);
 });
-Route::get('/search', [AuthController::class, 'search']);
-Route::get('/reset', [AuthController::class, 'reset']);
-Route::delete('/delete', [AuthController::class, 'destroy']);
+Route::get('/search', [AdminController::class, 'search']);
+Route::get('/reset', [AdminController::class, 'reset']);
+Route::delete('/delete', [AdminController::class, 'destroy']);
 
 Route::post('/export', [ExportController::class, 'export']);
