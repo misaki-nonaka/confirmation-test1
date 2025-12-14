@@ -2,16 +2,13 @@
 
 ## 環境構築
 - Dockerビルド
-    ・git clone git@github.com:Estra-Coachtech/laravel-docker-template.git
-    ・mv laravel-docker-template confirmation-test1
-    ・リモートリポジトリの変更
-    ・phpコンテナのUID/GIDの設定
+    ・git clone git@github.com:misaki-nonaka/confirmation-test1.git
     ・docker-compose up -d --build
 
 - Laravel環境構築
     ・docker-compose exec php bash
     ・composer install
-    ・.env　適宜環境変数変更
+    ・cp src/.env.example .env　、適宜環境変数変更
     ・php artisan key:generate
     ・php artisan migrate
     ・php artisan db:seed
@@ -29,3 +26,4 @@
 ・phpMyAdmin 5.2.3
 
 ## ER図
+![ER図](image.png)
