@@ -11,23 +11,6 @@ class ExportController extends Controller
     public function export(Request $request) {
         $id = $request->ids;
         $items = Contact::with('category')->whereIn('id', $id)->get();
-        // $csvContent = fopen('php://output', 'r+');
-        // // fputcsv($csvContent, ['id', 'category_id']);
-        // foreach ($items as $row) {
-        //     fputcsv($csvContent, $row);
-        // }
-        // rewind($csvContent);
-
-        // $csvData = stream_get_contents($csvContent);
-        // $sjisData = mb_convert_encoding($csvData, 'SJIS-win', 'UTF-8');
-        // fclose($csvContent);
-
-        // $filename = sprintf('contact-%s.csv', date('Ymd'));
-
-        // return Response::make($sjisData, 200, [
-        // 'Content-Type' => 'text/csv',
-        // 'Content-Disposition' => 'attachment; filename = $filename',
-        // ]);
 
         $response = new StreamedResponse(function () use ($items) {
             $handle = fopen('php://output', 'w');
